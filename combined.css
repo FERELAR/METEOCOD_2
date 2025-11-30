@@ -35,6 +35,81 @@ body.dark {
 --placeholder-color: #666;
 }
 
+/* Новые темы */
+body.sunny {
+--bg-gradient: linear-gradient(135deg, #ffd89b 0%, #19547b 100%);
+--text-color: #333;
+--header-bg: #ffd89b;
+--content-bg: #fff9e6;
+--btn-bg: #ff9a3d;
+--btn-text: white;
+--border-color: #ffb347;
+--result-bg: #fff0cc;
+--error-bg: #ffcc99;
+--success-bg: #ccffcc;
+--instructions-bg: #fff5e6;
+--game-bg: #fff9e6;
+--code-bg: #2c3e50;
+--code-text: #ff9a3d;
+--placeholder-color: #996633;
+}
+
+body.cloudy {
+--bg-gradient: linear-gradient(135deg, #bdc3c7 0%, #2c3e50 100%);
+--text-color: #2c3e50;
+--header-bg: #ecf0f1;
+--content-bg: #ecf0f1;
+--btn-bg: #7f8c8d;
+--btn-text: white;
+--border-color: #bdc3c7;
+--result-bg: #d5dbdb;
+--error-bg: #f1948a;
+--success-bg: #82e0aa;
+--instructions-bg: #d6dbdf;
+--game-bg: #ecf0f1;
+--code-bg: #2c3e50;
+--code-text: #34495e;
+--placeholder-color: #7f8c8d;
+}
+
+body.snowy {
+--bg-gradient: linear-gradient(135deg, #e6e9f0 0%, #eef1f5 100%);
+--text-color: #2c3e50;
+--header-bg: #ffffff;
+--content-bg: #f8f9fa;
+--btn-bg: #3498db;
+--btn-text: white;
+--border-color: #bdc3c7;
+--result-bg: #e8f4fc;
+--error-bg: #fadbd8;
+--success-bg: #d4efdf;
+--instructions-bg: #eaf2f8;
+--game-bg: #ffffff;
+--code-bg: #2c3e50;
+--code-text: #2980b9;
+--placeholder-color: #7f8c8d;
+}
+
+/* Размеры шрифтов */
+body.font-small {
+font-size: 14px;
+}
+body.font-normal {
+font-size: 16px;
+}
+body.font-large {
+font-size: 18px;
+}
+body.font-x-large {
+font-size: 20px;
+}
+
+/* Отключение анимаций */
+body.no-animations * {
+animation: none !important;
+transition: none !important;
+}
+
 {
 margin: 0;
 padding: 0;
@@ -47,6 +122,7 @@ line-height: 1.6;
 color: var(--text-color);
 background: var(--bg-gradient);
 min-height: 100vh;
+transition: background 0.3s, color 0.3s;
 }
 .container {
 max-width: 1200px;
@@ -69,7 +145,7 @@ margin-bottom: 0.5rem;
 color: #7f8c8d;
 font-size: 1.1rem;
 }
-.theme-toggle {
+.settings-toggle {
 position: absolute;
 top: 20px;
 right: 20px;
@@ -157,6 +233,10 @@ gap: 1rem;
 margin-bottom: 2rem;
 }
 .mode-btn {
+display: flex;
+flex-direction: column;
+align-items: center;
+text-align: center;
 padding: 1rem;
 border: 2px solid var(--border-color);
 border-radius: 8px;
@@ -165,6 +245,8 @@ cursor: pointer;
 transition: all 0.3s ease;
 text-align: center;
 color: var(--text-color);
+min-height: 120px;
+justify-content: center;
 }
 .mode-btn:hover {
 border-color: var(--btn-bg);
@@ -761,4 +843,117 @@ animation: rise 4s ease-in-out;
 @keyframes rise {
 0% { bottom: -100px; }
 100% { bottom: 100vh; }
+}
+
+/* Область для подсказок */
+.hint-area {
+text-align: center;
+margin: 15px 0;
+padding: 10px;
+background: var(--instructions-bg);
+border-radius: 6px;
+border-left: 4px solid var(--btn-bg);
+min-height: 40px;
+display: flex;
+align-items: center;
+justify-content: center;
+}
+
+/* Таблица статистики всех игр */
+.all-games-stats {
+margin-top: 30px;
+padding: 20px;
+background: var(--content-bg);
+border-radius: 10px;
+box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+}
+
+.all-games-stats h3 {
+text-align: center;
+margin-bottom: 15px;
+color: var(--text-color);
+}
+
+.all-games-stats table {
+width: 100%;
+border-collapse: collapse;
+margin-top: 10px;
+}
+
+.all-games-stats th, .all-games-stats td {
+padding: 12px;
+text-align: left;
+border-bottom: 1px solid var(--border-color);
+}
+
+.all-games-stats th {
+background: var(--header-bg);
+font-weight: 600;
+color: var(--text-color);
+}
+
+.all-games-stats tr:hover {
+background: var(--result-bg);
+}
+
+/* Модальное окно настроек */
+.modal {
+display: none;
+position: fixed;
+z-index: 1000;
+left: 0;
+top: 0;
+width: 100%;
+height: 100%;
+background-color: rgba(0,0,0,0.5);
+}
+
+.modal-content {
+background-color: var(--content-bg);
+margin: 5% auto;
+padding: 20px;
+border-radius: 10px;
+width: 90%;
+max-width: 500px;
+box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+position: relative;
+}
+
+.close {
+color: #aaa;
+float: right;
+font-size: 28px;
+font-weight: bold;
+cursor: pointer;
+position: absolute;
+top: 10px;
+right: 15px;
+}
+
+.close:hover {
+color: var(--text-color);
+}
+
+.setting-group {
+margin-bottom: 20px;
+}
+
+.setting-group label {
+display: block;
+margin-bottom: 8px;
+font-weight: 600;
+}
+
+.setting-group select, .setting-group input[type="checkbox"] {
+width: 100%;
+padding: 8px;
+border: 1px solid var(--border-color);
+border-radius: 4px;
+background: var(--result-bg);
+color: var(--text-color);
+}
+
+.setting-group input[type="checkbox"] {
+width: auto;
+margin-right: 10px;
 }
